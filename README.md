@@ -40,7 +40,7 @@ console.log(num.isNumber()); // Output: true
 
 // Chaining use
 const result = num.add(5).subtract(3).multiply(2).divide(2).round();
-console.log(result); // Output: 10
+console.log(result); // Output: 12
 ```
 
 ### Object

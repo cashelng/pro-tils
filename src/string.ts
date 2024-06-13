@@ -1,3 +1,5 @@
+import './object';
+
 export {};
 
 type NonNullableString = NonNullable<string>;
