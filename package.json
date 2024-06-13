@@ -1,0 +1,12 @@
+{
+  "name": "pro-tils",
+  "version": "1.0.0",
+  "description": "A small typeScript utilities package providing extensions to handle your values gracefully.",
+  "main": "src/index.ts",
+  "scripts": {},
+  "author": "Cashel",
+  "license": "ISC",
+  "devDependencies": {
+    "typescript": "^5.4.5"
+  }
+}
