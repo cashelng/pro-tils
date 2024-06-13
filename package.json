@@ -1,12 +1,22 @@
 {
-  "name": "pro-tils",
+  "name": "@cashelng/pro-tils",
   "version": "1.0.0",
   "description": "A small typeScript utilities package providing extensions to handle your values gracefully.",
-  "main": "src/index.ts",
-  "scripts": {},
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "test": "exit 0"
+  },
   "author": "Cashel",
   "license": "ISC",
   "devDependencies": {
     "typescript": "^5.4.5"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cashelng/pro-tils.git"
+  },
+  "publishConfig": {
+    "@cashelng:registry": "https://npm.pkg.github.com"
   }
 }
