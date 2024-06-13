@@ -1,4 +1,4 @@
-# pro-tils: TypeScript Extensions Package
+# pro-tils: a typescript extensions package
 
 This package extends global TypeScript interfaces with additional utility methods.
 
@@ -22,7 +22,7 @@ Import the package at the top of your TypeScript files to extend global interfac
 
 ```typescript
 // App.tsx
-import 'your-package-name';
+import '@cashelng/pro-tils';
 ```
 
 ### Number
@@ -53,12 +53,22 @@ const obj2 = { city: 'New York' };
 console.log(obj1.merge(obj2)); // Output: { name: 'John', age: 30, city: 'New York' }
 console.log(obj1.isNull()); // Output: false
 console.log(obj1.isUndefined()); // Output: false
+console.log(obj1.isNilOrEmpty()); // Output: false
 console.log(obj1.isNil()); // Output: false
 console.log(obj1.isNotEmpty()); // Output: true
 
 // Chaining use
 const mergedObject = obj1.merge(obj2).merge({ profession: 'Developer' });
 console.log(mergedObject); // Output: { name: 'John', age: 30, city: 'New York', profession: 'Developer' }
+```
+
+#### Object represents all data types, so these methods will be available for all.
+
+For example
+
+```typescript
+console.log([1, 2, 3].isNilOrEmpty()); // Output false
+console.log('hello'.isNil()); // Output false
 ```
 
 ### String
@@ -80,6 +90,8 @@ console.log('3.14'.parseFloat()); // Output: 3.14
 const capitalizedSentence = str.capitalizeSentence().startsWith('Hello');
 console.log(capitalizedSentence); // Output: true
 ```
+
+## And more on the way
 
 ## Contributing
 

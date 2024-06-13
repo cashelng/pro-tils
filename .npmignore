@@ -1,4 +1,5 @@
 node_modules
 src
+.husky
 .git*
 release-to-local.sh
