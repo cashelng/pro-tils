@@ -8,7 +8,7 @@ declare global {
     isNilOrEmpty(this: Object): boolean;
     isNotEmpty(this: Object): boolean;
 
-    exist<T, R>(this: T | undefined, callback: (value: T) => R): R | undefined;
+    exist<T, R>(this: T | undefined, callback?: (value: T) => R): R | boolean;
     merge<T, R>(this: T, obj: R): T & R;
   }
 }
@@ -50,12 +50,15 @@ Object.prototype.isNotEmpty = function (this: Object): boolean {
 + */
 Object.prototype.exist = function <T, R>(
   this: T | undefined,
-  callback: (value: T) => R
-): R | undefined {
+  callback?: (value: T) => R
+): R | boolean {
   if (this?.isNotEmpty()) {
-    return callback(this);
+    if (callback) {
+      return callback(this);
+    }
+    return true;
   }
-  return undefined;
+  return false;
 };
 
 Object.prototype.merge = function <T, R>(this: T, obj: R): T & R {
