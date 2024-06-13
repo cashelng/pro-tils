@@ -16,15 +16,16 @@ jobs:
         with:
           node-version: 16
 
+      - name: Configure npm for authentication
+        run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ~/.npmrc
+
       - run: yarn install --frozen-lockfile
 
       - run: yarn test
 
       - run: yarn build
 
-      - name: Publish to npm and yarn
+      - name: Publish to npm
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: |
-          npm publish --access public
-          yarn publish --access public
+        run: npm publish --access public
