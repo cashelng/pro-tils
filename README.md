@@ -7,13 +7,13 @@ This package extends global TypeScript interfaces with additional utility method
 via npm:
 
 ```bash
-npm  install  @cashelng/pro-tils
+npm install @cashelng/pro-tils
 ```
 
 via yarn:
 
 ```bash
-yarn  add  @cashelng/pro-tils
+yarn add @cashelng/pro-tils
 ```
 
 ## Usage
