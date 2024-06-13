@@ -22,7 +22,7 @@ Import the package at the top of your TypeScript files to extend global interfac
 
 ```typescript
 // App.tsx
-import 'your-package-name';
+import '@cashelng/pro-tils';
 ```
 
 ### Number
