@@ -1,4 +1,19 @@
-import 'index.d';
+export {};
+
+type NonNullableString = NonNullable<string>;
+
+declare global {
+  interface String {
+    parseInt(this: string): number;
+    parseFloat(this: string): number;
+    capitalize(this: string): string;
+    capitalizeSentence(this: string): string;
+    startsWith(this: string, str: NonNullableString): boolean;
+    endsWith(this: string, str: NonNullableString): boolean;
+    contains(this: string, str: NonNullableString): boolean;
+    containsIgnoreCase(this: string, str: NonNullableString): boolean;
+  }
+}
 
 String.prototype.parseInt = function (this: string) {
   return parseInt(this);

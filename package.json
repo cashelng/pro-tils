@@ -5,18 +5,17 @@
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "test": "exit 0"
+    "test": "exit 0",
+    "build": "npx tsc"
   },
+  "keywords": [
+    "typescript",
+    "prototypes",
+    "extensions"
+  ],
   "author": "Cashel",
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
     "typescript": "^5.4.5"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/cashelng/pro-tils.git"
-  },
-  "publishConfig": {
-    "@cashelng:registry": "https://npm.pkg.github.com"
   }
 }

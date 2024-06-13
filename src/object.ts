@@ -1,4 +1,17 @@
-import 'index.d';
+export {};
+
+declare global {
+  interface Object {
+    isNull(this: Object): boolean;
+    isUndefined(this: Object): boolean;
+    isNil(this: Object): boolean;
+    isNilOrEmpty(this: Object): boolean;
+    isNotEmpty(this: Object): boolean;
+
+    exist<T, R>(this: T | undefined, callback: (value: T) => R): R | undefined;
+    merge<T, R>(this: T, obj: R): T & R;
+  }
+}
 
 Object.prototype.isNull = function (this: Object): boolean {
   return this === null;

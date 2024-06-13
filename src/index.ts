@@ -1,3 +1,5 @@
-import 'number';
-import 'object';
-import 'string';
+import './number';
+import './object';
+import './string';
+
+export {};
