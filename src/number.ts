@@ -1,5 +1,3 @@
-import 'index.d';
-
 Number.prototype.divide = function (num: number): number {
   return this / num;
 };
