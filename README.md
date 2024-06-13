@@ -57,8 +57,12 @@ console.log(obj1.isNilOrEmpty()); // Output: false
 console.log(obj1.isNil()); // Output: false
 console.log(obj1.isNotEmpty()); // Output: true
 
+obj1.exist((itself) => {
+  console.log(itself);
+}); // Output { name: 'John', age: 30 }
+
 // Chaining use
-const mergedObject = obj1.merge(obj2).merge({ profession: 'Developer' });
+const mergedObject = obj1.exist((it) => it.merge(obj2).merge({ profession: 'Developer' }));
 console.log(mergedObject); // Output: { name: 'John', age: 30, city: 'New York', profession: 'Developer' }
 ```
 
@@ -78,7 +82,7 @@ console.log('hello'.isNil()); // Output false
 const str = 'hello world';
 
 console.log(str.capitalize()); // Output: 'Hello world'
-console.log(str.capitalizeSentence()); // Output: 'Hello world'
+console.log(str.capitalizeSentence()); // Output: 'Hello World'
 console.log(str.startsWith('hello')); // Output: true
 console.log(str.endsWith('world')); // Output: true
 console.log(str.contains('lo')); // Output: true

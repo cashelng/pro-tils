@@ -31,12 +31,12 @@ describe('Object Extensions', () => {
   });
 
   it('should chain merge operations correctly', () => {
-    const mergedObject = obj1.merge(obj2).merge({ profession: 'Developer' });
-    expect(mergedObject).toEqual({
-      name: 'John',
-      age: 30,
-      city: 'New York',
-      profession: 'Developer',
-    });
+    const result = obj1.merge(obj2).merge({ profession: 'Developer' });
+    expect(result).toEqual({ name: 'John', age: 30, city: 'New York', profession: 'Developer' });
+  });
+
+  it('should exist operations correctly', () => {
+    const result = obj1.exist((it) => it.merge(obj2).merge({ profession: 'Developer' }));
+    expect(result).toEqual({ name: 'John', age: 30, city: 'New York', profession: 'Developer' });
   });
 });
