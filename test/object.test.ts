@@ -1,4 +1,4 @@
-import './object';
+import '../src/object';
 
 describe('Object Extensions', () => {
   // Example objects for testing

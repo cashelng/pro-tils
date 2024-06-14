@@ -21,3 +21,6 @@ Thumbs.db
 
 # Environment variables file
 .env
+
+# Optional npm cache directory
+.npm
