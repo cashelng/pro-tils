@@ -1,4 +1,4 @@
-import './string';
+import '../src/string';
 
 describe('String', () => {
   // Example string for testing
