@@ -1,6 +1,6 @@
-# pro-tils: a typescript extensions package
+# pro-tils: a small extensions package which also supported typescript
 
-This package extends global TypeScript interfaces with additional utility methods.
+This package extends global Javascript interfaces with additional utility methods.
 
 ## Installation
 
@@ -93,6 +93,12 @@ console.log('3.14'.parseFloat()); // Output: 3.14
 // Chaining use
 const capitalizedSentence = str.capitalizeSentence().startsWith('Hello');
 console.log(capitalizedSentence); // Output: true
+```
+
+### Array
+
+```typescript
+
 ```
 
 ## And more on the way
