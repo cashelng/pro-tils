@@ -1,4 +1,4 @@
-import './number';
+import '../src/number';
 
 describe('Number', () => {
   it('should add numbers correctly', () => {

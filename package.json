@@ -1,7 +1,7 @@
 {
   "name": "@cashelng/pro-tils",
-  "version": "1.0.5",
-  "description": "A small typeScript utilities package providing extensions to handle your values gracefully.",
+  "version": "1.0.6",
+  "description": "A small extensions package which also supported typescript to handle your values gracefully.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
@@ -30,5 +30,8 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/cashelng/pro-tils.git"
-  }
+  },
+  "files": [
+    "dist"
+  ]
 }
