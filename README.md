@@ -1,6 +1,6 @@
-# pro-tils: a typescript extensions package
+# pro-tils: a small extensions package which also supported typescript
 
-This package extends global TypeScript interfaces with additional utility methods.
+This package extends global Javascript interfaces with additional utility methods.
 
 ## Installation
 
