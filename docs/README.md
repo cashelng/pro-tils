@@ -33,9 +33,6 @@ import '@cashelng/pro-tils';
 
 ## Number
 
-<details>
-<summary>Supported utils</summary>
-
 ### `number.add()`
 
 ```typescript
@@ -173,12 +170,7 @@ console.log((10.9999).trunc()); // 10
 console.log((10.999999999999999).trunc()); // 10
 ```
 
-</details>
-
 ## Array
-
-<details>
-<summary>Supported utils</summary>
 
 ### `Array.head()`
 
@@ -264,12 +256,7 @@ const arr3 = [{ id: 1, name: 'Alice' }, { name: 'Bob' }, { id: 1, name: 'Charlie
 console.log(arr3.groupBy('id')); // Map { 1 => [{ id: 1, name: 'Alice' }, { id: 1, name: 'Charlie' }] }
 ```
 
-</details>
-
 ## Object
-
-<details>
-<summary>Supported utils</summary>
 
 #### In javascript, Object type represents all other valid data types, these following method will support all others
 
@@ -460,12 +447,7 @@ const emptyObjValues = {};
 console.log(emptyObjValues.objectValues()); // console.log([])
 ```
 
-</details>
-
 ## String
-
-<details>
-<summary>Supported utils</summary>
 
 ### `String.capitalize()`
 
@@ -533,7 +515,5 @@ console.log(noSubstringIgnoreCase.containsIgnoreCase('HELO')); // console.log(fa
 const emptyStringIgnoreCase = '';
 console.log(emptyStringIgnoreCase.containsIgnoreCase('foo')); // console.log(false)
 ```
-
-</details>
 
 ## More on the way ^^
