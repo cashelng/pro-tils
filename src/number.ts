@@ -55,6 +55,13 @@ declare global {
      * @return {number} The rounded number.
      */
     floor(this: number): number;
+
+    /**
+     * Truncates the current number to the nearest integer.
+     *
+     * @return {number} The truncated number.
+     */
+    trunc(this: number): number;
   }
 }
 
@@ -78,4 +85,7 @@ Number.prototype.round = function (): number {
 };
 Number.prototype.floor = function (): number {
   return Math.floor(this);
+};
+Number.prototype.trunc = function (): number {
+  return Math.trunc(this);
 };

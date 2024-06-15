@@ -1,3 +1,13 @@
+### A small extensions package which also supported typescript
+
+This package extends global Javascript interfaces with additional utility methods.
+
+**Notes:**
+
+**This will not replace the existing methods, just to create new utility functions attached into prototypes**
+
+Please raise an issue, or submit a pull request yourself if you see any overlap.
+
 # Installation
 
 via npm:
@@ -24,7 +34,7 @@ import '@cashelng/pro-tils';
 ## Number
 
 <details>
-<summary>All supported functions</summary>
+<summary>Supported utils</summary>
 
 ### `number.add()`
 
@@ -153,12 +163,22 @@ const num4 = 0;
 console.log(num4.floor()); // 0
 ```
 
+### `number.trunc()`
+
+```typescript
+console.log((10.5).trunc()); // 10
+console.log((-10.5).trunc()); // -10
+console.log((0).trunc()); // 0
+console.log((10.9999).trunc()); // 10
+console.log((10.999999999999999).trunc()); // 10
+```
+
 </details>
 
 ## Array
 
 <details>
-<summary>All supported functions</summary>
+<summary>Supported utils</summary>
 
 ### `Array.head()`
 
@@ -188,15 +208,15 @@ console.log([1, 2, 2, 3, 3, 3].uniq()); // [1, 2, 3]
 Notice that the last element with the same value will be preserved.
 
 ```typescript
-const input1: any[] = [];
-const key1: keyof any = 'name';
+const input1: User[] = [];
+const key1: keyof User = 'name';
 console.log(input1.uniqBy(key1)); // []
 
-const input2: any[] = [{ name: 'John' }, { name: 'Jane' }];
+const input2: User[] = [{ name: 'John' }, { name: 'Jane' }];
 const key2: keyof any = 'name';
 console.log(input2.uniqBy(key2)); // [{ name: 'John' }, { name: 'Jane' }]
 
-const input3: any[] = [
+const input3: User[] = [
   { name: 'John', age: 30 },
   { name: 'Jane', age: 25 },
   { name: 'John', age: 35 },
@@ -249,13 +269,271 @@ console.log(arr3.groupBy('id')); // Map { 1 => [{ id: 1, name: 'Alice' }, { id: 
 ## Object
 
 <details>
-<summary>All supported functions</summary>
+<summary>Supported utils</summary>
+
+#### In javascript, Object type represents all other valid data types, these following method will support all others
+
+### `Object.isEmpty()`
+
+```typescript
+const emptyString = '';
+console.log(emptyString.isEmpty()); // console.log(true)
+
+const emptyArray = [];
+console.log(emptyArray.isEmpty()); // console.log(true)
+
+const emptyObject = {};
+console.log(emptyObject.isEmpty()); // console.log(true)
+
+const nonEmptyString = 'hello';
+console.log(nonEmptyString.isEmpty()); // console.log(false)
+
+const nonEmptyArray = [1, 2, 3];
+console.log(nonEmptyArray.isEmpty()); // console.log(false)
+
+const nonEmptyObject = { name: 'Alice', age: 25 };
+console.log(nonEmptyObject.isEmpty()); // console.log(false)
+```
+
+### `Object.isNotEmpty()`
+
+```typescript
+const nonEmptyObj = { name: 'John', age: 30 };
+console.log(nonEmptyObj.isNotEmpty()); // console.log(true)
+
+const emptyObj = {};
+console.log(emptyObj.isNotEmpty()); // console.log(false)
+```
+
+### `Object.exist()`
+
+```typescript
+const objExists: User = { name: 'John' };
+const callbackExists = (value: User) => value.name === 'John';
+console.log(objExists.exist(callbackExists)); // console.log(true)
+
+const objExistsNoCallback = { name: 'John' };
+console.log(objExistsNoCallback.exist()); // console.log(true)
+
+const objEmpty = {};
+console.log(objEmpty.exist()); // console.log(false)
+
+const objCallbackResult: User = { name: 'John' };
+const callbackLength = (value: User) => value.name.length;
+console.log(objCallbackResult.exist(callbackLength)); // console.log(4)
+
+const objCallbackFalse: User = { name: 'John' };
+const callbackFalse = (value: User) => value.name === 'Jane';
+console.log(objCallbackFalse.exist(callbackFalse)); // console.log(false)
+```
+
+### `Object.merge()`
+
+```typescript
+const obj1Merge = { name: 'John' };
+const obj2Merge = { age: 30 };
+const mergedObj = obj1Merge.merge(obj2Merge);
+console.log(mergedObj); // console.log({ name: 'John', age: 30 })
+
+const obj1EmptyMerge = { name: 'John' };
+const obj2EmptyMerge = {};
+const mergedObjEmpty = obj1EmptyMerge.merge(obj2EmptyMerge);
+console.log(mergedObjEmpty); // console.log({ name: 'John' })
+
+const obj1EmptyObjMerge = {};
+const obj2NotEmptyMerge = { age: 30 };
+const mergedObjNotEmpty = obj1EmptyObjMerge.merge(obj2NotEmptyMerge);
+console.log(mergedObjNotEmpty); // console.log({ age: 30 })
+
+const obj1OverlapMerge = { name: 'John', age: 30 };
+const obj2OverlapMerge = { name: 'Alice', age: 25 };
+const mergedObjOverlap = obj1OverlapMerge.merge(obj2OverlapMerge);
+console.log(mergedObjOverlap); // console.log({ name: 'Alice', age: 25 })
+
+const obj1NullMerge = { name: 'John' };
+let mergedObjNull = obj1NullMerge.merge(null);
+console.log(mergedObjNull); // console.log({ name: 'John' })
+mergedObjNull = obj1NullMerge.merge(undefined);
+console.log(mergedObjNull); // console.log({ name: 'John' })
+
+const obj1MergeEmptyRecord = { name: 'John' };
+const obj2MergeEmptyRecord: Record<string, any> = {};
+const mergedObjEmptyRecord = obj1MergeEmptyRecord.merge(obj2MergeEmptyRecord);
+console.log(mergedObjEmptyRecord); // console.log({ name: 'John' })
+
+const obj1MergeNonEmptyRecord: Record<string, any> = { key1: 'value1' };
+const obj2MergeNonEmpty = { key2: 'value2' };
+const mergedObjNonEmptyRecord = obj1MergeNonEmptyRecord.merge(obj2MergeNonEmpty);
+console.log(mergedObjNonEmptyRecord); // console.log({ key1: 'value1', key2: 'value2' })
+```
+
+### `Object.isNumber()`
+
+```typescript
+const validNumber = 5;
+console.log(validNumber.isNumber()); // console.log(true)
+
+const callbackNumber = (value: number) => value * 2;
+console.log((10).isNumber(callbackNumber)); // console.log(20)
+
+const invalidNumber = 'abc' as any;
+console.log(invalidNumber.isNumber()); // console.log(false)
+
+const nonEmptyObjIsNumber = { key: 'value' };
+console.log(nonEmptyObjIsNumber.isNumber()); // console.log(false)
+```
+
+### `Object.parseInt()`
+
+```typescript
+const boolTrueParse = true;
+console.log(boolTrueParse.parseInt()); // console.log(1)
+
+const boolFalseParse = false;
+console.log(boolFalseParse.parseInt()); // console.log(0)
+
+const emptyArrayParse = [];
+console.log(emptyArrayParse.parseInt()); // console.log(0)
+
+const nonNumberParse = 'hello';
+console.log(nonNumberParse.parseInt()); // console.log(NaN)
+
+const emptyRecordParse: Record<string, any> = {};
+console.log(emptyRecordParse.parseInt()); // console.log(NaN)
+
+const nonEmptyRecordParse = { key: 'value' };
+console.log(nonEmptyRecordParse.parseInt()); // console.log(NaN)
+
+const numberValueParse = 123;
+console.log(numberValueParse.parseInt()); // console.log(123)
+
+const numberFloatParse = 123.456;
+console.log(numberFloatParse.parseInt()); // console.log(123)
+
+const negativeNumberFloatParse = -123.456;
+console.log(negativeNumberFloatParse.parseInt()); // console.log(-123)
+
+const stringNumberParse = '123';
+console.log(stringNumberParse.parseInt()); // console.log(123)
+
+const stringFloatParse = '123.456';
+console.log(stringFloatParse.parseInt()); // console.log(123)
+
+const stringNegativeFloatParse = '-123.456';
+console.log(stringNegativeFloatParse.parseInt()); // console.log(-123)
+```
+
+#### From here, these will only support key-value pairs
+
+### `Object.objectKeys()`
+
+```typescript
+const emptyArrayKeys = [];
+console.log(emptyArrayKeys.objectKeys()); // console.log([])
+
+const emptyObjectKeys = {};
+console.log(emptyObjectKeys.objectKeys()); // console.log([])
+
+const nonEmptyObjectKeys = { name: 'John', age: 30 };
+console.log(nonEmptyObjectKeys.objectKeys()); // console.log(['name', 'age'])
+
+class Parent {
+  parentProp = 'parent';
+}
+class Child extends Parent {
+  childProp = 'child';
+}
+const childObj = new Child();
+console.log(childObj.objectKeys()); // console.log(['parentProp', 'childProp'])
+
+const nonEmptyRecordKeys: Record<string, any> = { key1: 'value1', key2: 'value2' };
+console.log(nonEmptyRecordKeys.objectKeys()); // console.log(['key1', 'key2'])
+```
+
+### `Object.objectValues()`
+
+```typescript
+const objValues = { a: 1, b: 'two', c: true };
+console.log(objValues.objectValues()); // console.log([1, 'two', true])
+
+const emptyObjValues = {};
+console.log(emptyObjValues.objectValues()); // console.log([])
+```
+
 </details>
 
 ## String
 
 <details>
-<summary>All supported functions</summary>
+<summary>Supported utils</summary>
+
+### `String.capitalize()`
+
+```typescript
+const emptyStringCapitalize = '';
+console.log(emptyStringCapitalize.capitalize()); // console.log('')
+
+const singleLowercaseCapitalize = 'a';
+console.log(singleLowercaseCapitalize.capitalize()); // console.log('A')
+
+const singleUppercaseCapitalize = 'A';
+console.log(singleUppercaseCapitalize.capitalize()); // console.log('A')
+
+const lowercaseWordCapitalize = 'hello';
+console.log(lowercaseWordCapitalize.capitalize()); // console.log('Hello')
+
+const uppercaseFirstCapitalize = 'Hello';
+console.log(uppercaseFirstCapitalize.capitalize()); // console.log('Hello')
+```
+
+### `String.capitalizeSentence()`
+
+```typescript
+const sentenceCapitalize = 'hello world';
+console.log(sentenceCapitalize.capitalizeSentence()); // console.log('Hello World')
+
+console.log('this is a test'.capitalizeSentence()); // console.log('This Is A Test')
+
+console.log('123 abc'.capitalizeSentence()); // console.log('123 Abc')
+
+console.log(''.capitalizeSentence()); // console.log('')
+
+console.log(' '.capitalizeSentence()); // console.log('')
+```
+
+### `String.contains()`
+
+```typescript
+const emptyStringContains = '';
+console.log(emptyStringContains.contains('')); // console.log(false)
+
+const noSubstringContains = 'hello';
+console.log(noSubstringContains.contains('world')); // console.log(false)
+
+const substringContains = 'hello world';
+console.log(substringContains.contains('world')); // console.log(true)
+
+const caseSensitiveContains = 'hello World';
+console.log(caseSensitiveContains.contains('world')); // console.log(false)
+```
+
+### `String.containsIgnoreCase()`
+
+```typescript
+const substringIgnoreCase = 'Hello World';
+console.log(substringIgnoreCase.containsIgnoreCase('hello')); // console.log(true)
+
+console.log(substringIgnoreCase.containsIgnoreCase('world')); // console.log(true)
+
+const noSubstringIgnoreCase = 'Hello World';
+console.log(noSubstringIgnoreCase.containsIgnoreCase('foo')); // console.log(false)
+
+console.log(noSubstringIgnoreCase.containsIgnoreCase('HELO')); // console.log(false)
+
+const emptyStringIgnoreCase = '';
+console.log(emptyStringIgnoreCase.containsIgnoreCase('foo')); // console.log(false)
+```
+
 </details>
 
 ## More on the way ^^

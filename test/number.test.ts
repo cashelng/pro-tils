@@ -204,3 +204,25 @@ describe('Number.floor', () => {
     expect(result).toBe(0);
   });
 });
+
+describe('Number.trunc', () => {
+  it('should return the integer part of a positive number', () => {
+    expect((10.5).trunc()).toEqual(10);
+  });
+
+  it('should return the integer part of a negative number', () => {
+    expect((-10.5).trunc()).toEqual(-10);
+  });
+
+  it('should return 0 for 0', () => {
+    expect((0).trunc()).toEqual(0);
+  });
+
+  it('should return the integer part of a number with a decimal part', () => {
+    expect((10.9999).trunc()).toEqual(10);
+  });
+
+  it('should return the integer part of a number with a large decimal part', () => {
+    expect((10.999999999999999).trunc()).toEqual(10);
+  });
+});

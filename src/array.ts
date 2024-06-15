@@ -1,8 +1,7 @@
 import './object';
+import { IterableType } from './type';
 
 export {};
-
-type IterableType = number | string | symbol;
 
 declare global {
   interface Array<T> {
@@ -67,14 +66,14 @@ Array.prototype.tail = function <T>(this: T[]): T {
 };
 
 Array.prototype.uniq = function <IterableType>(this: IterableType[]): IterableType[] {
-  if (this.isNilOrEmpty()) {
+  if (this.isEmpty()) {
     return [];
   }
   return [...new Set(this)];
 };
 
 Array.prototype.uniqBy = function <T>(this: T[], key: keyof T): T[] {
-  if (this.isNilOrEmpty()) {
+  if (this.isEmpty()) {
     return [];
   }
   const map = new Map<any, T>();

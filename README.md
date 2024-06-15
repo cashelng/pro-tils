@@ -6,6 +6,8 @@ This package extends global Javascript interfaces with additional utility method
 
 **This will not replace the existing methods, just to create new utility functions attached into prototypes**
 
+Please raise an issue, or submit a pull request yourself if you see any overlap.
+
 ## Documents
 
 Check out [this documentation](https://cashelng.github.io/pro-tils/) for installation and usage
