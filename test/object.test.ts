@@ -181,3 +181,98 @@ describe('Object.objectValues', () => {
     expect(obj.objectValues()).toEqual([]);
   });
 });
+
+describe('Object.objectEntries', () => {
+  it('should return an empty array for an empty object', () => {
+    const emptyObject = {};
+    expect(emptyObject.objectEntries()).toEqual([]);
+  });
+
+  it('should return an array of key-value pairs for an object with string keys and string values', () => {
+    const stringObject = { name: 'John', age: '30' };
+    expect(stringObject.objectEntries()).toEqual([
+      ['name', 'John'],
+      ['age', '30'],
+    ]);
+  });
+
+  it('should return an array of key-value pairs for an object with number keys and boolean values', () => {
+    const numberObject = { 1: true, 2: false };
+    expect(numberObject.objectEntries()).toEqual([
+      ['1', true],
+      ['2', false],
+    ]);
+  });
+
+  it('should return an array of key-value pairs for an object with nested objects', () => {
+    const nestedObject = {
+      name: 'John',
+      age: 30,
+      address: { street: '123 Main St', city: 'Anytown' },
+    };
+    expect(nestedObject.objectEntries()).toEqual([
+      ['name', 'John'],
+      ['age', 30],
+      ['address', { street: '123 Main St', city: 'Anytown' }],
+    ]);
+  });
+
+  it('should return an array of key-value pairs for an object with nested arrays', () => {
+    const nestedArrayObject = { name: 'John', age: 30, hobbies: ['reading', 'hiking', 'cooking'] };
+    expect(nestedArrayObject.objectEntries()).toEqual([
+      ['name', 'John'],
+      ['age', 30],
+      ['hobbies', ['reading', 'hiking', 'cooking']],
+    ]);
+  });
+
+  it('should return an array of key-value pairs for an object with nested objects and arrays', () => {
+    const complexNestedObject = {
+      name: 'John',
+      age: 30,
+      address: { street: '123 Main St', city: 'Anytown' },
+      hobbies: ['reading', 'hiking', 'cooking'],
+      friends: [
+        { name: 'Alice', age: 25 },
+        { name: 'Bob', age: 35 },
+      ],
+    };
+    expect(complexNestedObject.objectEntries()).toEqual([
+      ['name', 'John'],
+      ['age', 30],
+      ['address', { street: '123 Main St', city: 'Anytown' }],
+      ['hobbies', ['reading', 'hiking', 'cooking']],
+      [
+        'friends',
+        [
+          { name: 'Alice', age: 25 },
+          { name: 'Bob', age: 35 },
+        ],
+      ],
+    ]);
+  });
+});
+
+describe('Object.getDeep', () => {
+  it('should return the deeply nested value if it exists', () => {
+    const obj = {
+      a: {
+        b: {
+          c: 123,
+        },
+      },
+    };
+    expect(obj.getDeep('a.b.c')).toBe(123);
+  });
+
+  it('should return undefined if the deeply nested value does not exist', () => {
+    const obj = {
+      a: {
+        b: {
+          c: 123,
+        },
+      },
+    };
+    expect(obj.getDeep('x.y.z' as any)).toBeUndefined();
+  });
+});

@@ -1,12 +1,12 @@
 {
   "name": "@cashelng/pro-tils",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "A small extensions package which also supported typescript to handle your values gracefully.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
     "test": "jest",
-    "build": "npx tsc"
+    "build": "yarn test && npx tsc"
   },
   "husky": {
     "hooks": {

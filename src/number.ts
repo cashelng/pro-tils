@@ -65,27 +65,53 @@ declare global {
   }
 }
 
-Number.prototype.divide = function (num: number): number {
-  return this / num;
-};
-Number.prototype.multiply = function (num: number): number {
-  return this * num;
-};
-Number.prototype.add = function (num: number): number {
-  return this + num;
-};
-Number.prototype.subtract = function (num: number): number {
-  return this - num;
-};
-Number.prototype.pow = function (num: number): number {
-  return Math.pow(this, num);
-};
-Number.prototype.round = function (): number {
-  return Math.round(this);
-};
-Number.prototype.floor = function (): number {
-  return Math.floor(this);
-};
-Number.prototype.trunc = function (): number {
-  return Math.trunc(this);
-};
+Object.defineProperties(Number.prototype, {
+  divide: {
+    value: function (num: number): number {
+      return this / num;
+    },
+    enumerable: false,
+  },
+  multiply: {
+    value: function (num: number): number {
+      return this * num;
+    },
+    enumerable: false,
+  },
+  add: {
+    value: function (num: number): number {
+      return this + num;
+    },
+    enumerable: false,
+  },
+  subtract: {
+    value: function (num: number): number {
+      return this - num;
+    },
+    enumerable: false,
+  },
+  pow: {
+    value: function (num: number): number {
+      return Math.pow(this, num);
+    },
+    enumerable: false,
+  },
+  round: {
+    value: function (): number {
+      return Math.round(this);
+    },
+    enumerable: false,
+  },
+  floor: {
+    value: function (): number {
+      return Math.floor(this);
+    },
+    enumerable: false,
+  },
+  trunc: {
+    value: function (): number {
+      return Math.trunc(this);
+    },
+    enumerable: false,
+  },
+});
