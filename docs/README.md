@@ -447,6 +447,65 @@ const emptyObjValues = {};
 console.log(emptyObjValues.objectValues()); // console.log([])
 ```
 
+### `Object.objectEntries()`
+
+```typescript
+const emptyObject = {};
+console.log(emptyObject.objectEntries()); // console.log([])
+
+const stringObject = { name: 'John', age: '30' };
+console.log(stringObject.objectEntries()); // console.log([['name', 'John'], ['age', '30']])
+
+const numberObject = { 1: true, 2: false };
+console.log(numberObject.objectEntries()); // console.log([['1', true], ['2', false]])
+
+const nestedObject = {
+  name: 'John',
+  age: 30,
+  address: { street: '123 Main St', city: 'Anytown' },
+};
+console.log(nestedObject.objectEntries()); // console.log([['name', 'John'], ['age', 30], ['address', { street: '123 Main St', city: 'Anytown' }]])
+
+const nestedArrayObject = { name: 'John', age: 30, hobbies: ['reading', 'hiking', 'cooking'] };
+console.log(nestedArrayObject.objectEntries()); // console.log([['name', 'John'], ['age', 30], ['hobbies', ['reading', 'hiking', 'cooking']]])
+
+const complexNestedObject = {
+  name: 'John',
+  age: 30,
+  address: { street: '123 Main St', city: 'Anytown' },
+  hobbies: ['reading', 'hiking', 'cooking'],
+  friends: [
+    { name: 'Alice', age: 25 },
+    { name: 'Bob', age: 35 },
+  ],
+};
+console.log(complexNestedObject.objectEntries()); // console.log([['name', 'John'], ['age', 30], ['address', { street: '123 Main St', city: 'Anytown' }], ['hobbies', ['reading', 'hiking', 'cooking']], ['friends', [{ name: 'Alice', age: 25 }, { name: 'Bob', age: 35 }]]])
+```
+
+To convert the unit test results for `Object.getDeep()` into Markdown format, you can structure it as follows:
+
+### `Object.getDeep()`
+
+```typescript
+const obj1 = {
+  a: {
+    b: {
+      c: 123,
+    },
+  },
+};
+console.log(obj1.getDeep('a.b.c')); // console.log(123)
+
+const obj2 = {
+  a: {
+    b: {
+      c: 123,
+    },
+  },
+};
+console.log(obj2.getDeep('x.y.z' as any)); // console.log(undefined)
+```
+
 ## String
 
 ### `String.capitalize()`

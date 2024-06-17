@@ -36,27 +36,38 @@ declare global {
   }
 }
 
-String.prototype.capitalize = function (this: string) {
-  return this.charAt(0).toUpperCase() + this.slice(1);
-};
-
-String.prototype.capitalizeSentence = function (this: string) {
-  return this.trim()
-    .split(' ')
-    .map((s) => s.capitalize())
-    .join(' ');
-};
-
-String.prototype.contains = function (this: string, str: NonNullable<string>) {
-  if (this.isEmpty()) {
-    return false;
-  }
-  return this.indexOf(str) !== -1;
-};
-
-String.prototype.containsIgnoreCase = function (this: string, str: NonNullable<string>) {
-  if (this.isEmpty()) {
-    return false;
-  }
-  return this.toLowerCase().indexOf(str.toLowerCase()) !== -1;
-};
+Object.defineProperties(String.prototype, {
+  capitalize: {
+    value: function (this: string) {
+      return this.charAt(0).toUpperCase() + this.slice(1);
+    },
+    enumerable: false,
+  },
+  capitalizeSentence: {
+    value: function (this: string) {
+      return this.trim()
+        .split(' ')
+        .map((s) => s.capitalize())
+        .join(' ');
+    },
+    enumerable: false,
+  },
+  contains: {
+    value: function (this: string, str: NonNullable<string>) {
+      if (this.isEmpty()) {
+        return false;
+      }
+      return this.indexOf(str) !== -1;
+    },
+    enumerable: false,
+  },
+  containsIgnoreCase: {
+    value: function (this: string, str: NonNullable<string>) {
+      if (this.isEmpty()) {
+        return false;
+      }
+      return this.toLowerCase().indexOf(str.toLowerCase()) !== -1;
+    },
+    enumerable: false,
+  },
+});
