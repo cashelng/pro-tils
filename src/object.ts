@@ -25,7 +25,7 @@ declare global {
      * @param {((value: T) => R) | undefined} callback - An optional callback function to be called with the object as an argument.
      * @return {R | boolean} The return value of the callback function if provided, or true if the object exists and is not empty, or false otherwise.
      */
-    exist<T, R>(this: NonNullable<Object>, callback?: (value: T) => R): R | boolean;
+    exist<T, R>(this: NonNullable<T>, callback?: (value: T) => R): R | boolean;
 
     /**
      * Merges two objects into a single object.
