@@ -33,7 +33,7 @@ declare global {
      * @param {R} obj - The object to merge into the first object.
      * @return {T & R} - The merged object.
      */
-    merge<T, R>(this: NonNullable<T>, obj: R): T & R;
+    mergeWith<T, R>(this: NonNullable<T>, obj: R): T & R;
 
     /**
      * Checks if the object is a number. If a callback function is provided, it is called with the number value as an argument and the return value is returned. Otherwise, true is returned if the object is a number and not NaN, false otherwise.
@@ -120,7 +120,7 @@ Object.defineProperties(Object.prototype, {
     },
     enumerable: false,
   },
-  merge: {
+  mergeWith: {
     value: function <T, R>(this: NonNullable<T>, obj: R): T & R {
       return { ...this, ...obj };
     },

@@ -72,36 +72,36 @@ describe('Object.merge', () => {
   it('should merge two objects', () => {
     const obj1 = { name: 'John' };
     const obj2 = { age: 30 };
-    const mergedObj = obj1.merge(obj2);
+    const mergedObj = obj1.mergeWith(obj2);
     expect(mergedObj).toEqual({ name: 'John', age: 30 });
   });
 
   it('should merge an object with an empty object', () => {
     const obj1 = { name: 'John' };
     const obj2 = {};
-    const mergedObj = obj1.merge(obj2);
+    const mergedObj = obj1.mergeWith(obj2);
     expect(mergedObj).toEqual({ name: 'John' });
   });
 
   it('should merge an empty object with an object', () => {
     const obj1 = {};
     const obj2 = { age: 30 };
-    const mergedObj = obj1.merge(obj2);
+    const mergedObj = obj1.mergeWith(obj2);
     expect(mergedObj).toEqual({ age: 30 });
   });
 
   it('should merge two objects with overlapping properties', () => {
     const obj1 = { name: 'John', age: 30 };
     const obj2 = { name: 'Alice', age: 25 };
-    const mergedObj = obj1.merge(obj2);
+    const mergedObj = obj1.mergeWith(obj2);
     expect(mergedObj).toEqual({ name: 'Alice', age: 25 });
   });
 
   it('should return the first object if the second object is null or undefined', () => {
     const obj1 = { name: 'John' };
-    let mergedObj = obj1.merge(null);
+    let mergedObj = obj1.mergeWith(null);
     expect(mergedObj).toEqual({ name: 'John' });
-    mergedObj = obj1.merge(undefined);
+    mergedObj = obj1.mergeWith(undefined);
     expect(mergedObj).toEqual({ name: 'John' });
   });
 });

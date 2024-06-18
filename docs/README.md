@@ -10,10 +10,10 @@ Please raise an issue, or submit a pull request yourself if you see any overlap.
 
 # Why
 
-All of this is just to use chaining functions efficiently.
+All of this is just to create utility functions which are usually used in projects, also provide a usage of chaining functions efficiently.
 Chaining functions can indeed reduce the need for intermediate variable declarations, leading to more concise and readable code.
 
-Let consider my example, you had an object which is like
+Let consider below example, we had an object which is like
 
 ```typescript
 type User = {
@@ -352,43 +352,43 @@ const callbackFalse = (value: User) => value.name === 'Jane';
 console.log(objCallbackFalse.exist(callbackFalse)); // console.log(false)
 ```
 
-### `Object.merge()`
+### `Object.mergeWith()`
 
 ```typescript
 const obj1Merge = { name: 'John' };
 const obj2Merge = { age: 30 };
-const mergedObj = obj1Merge.merge(obj2Merge);
+const mergedObj = obj1Merge.mergeWith(obj2Merge);
 console.log(mergedObj); // console.log({ name: 'John', age: 30 })
 
 const obj1EmptyMerge = { name: 'John' };
 const obj2EmptyMerge = {};
-const mergedObjEmpty = obj1EmptyMerge.merge(obj2EmptyMerge);
+const mergedObjEmpty = obj1EmptyMerge.mergeWith(obj2EmptyMerge);
 console.log(mergedObjEmpty); // console.log({ name: 'John' })
 
 const obj1EmptyObjMerge = {};
 const obj2NotEmptyMerge = { age: 30 };
-const mergedObjNotEmpty = obj1EmptyObjMerge.merge(obj2NotEmptyMerge);
+const mergedObjNotEmpty = obj1EmptyObjMerge.mergeWith(obj2NotEmptyMerge);
 console.log(mergedObjNotEmpty); // console.log({ age: 30 })
 
 const obj1OverlapMerge = { name: 'John', age: 30 };
 const obj2OverlapMerge = { name: 'Alice', age: 25 };
-const mergedObjOverlap = obj1OverlapMerge.merge(obj2OverlapMerge);
+const mergedObjOverlap = obj1OverlapMerge.mergeWith(obj2OverlapMerge);
 console.log(mergedObjOverlap); // console.log({ name: 'Alice', age: 25 })
 
 const obj1NullMerge = { name: 'John' };
-let mergedObjNull = obj1NullMerge.merge(null);
+let mergedObjNull = obj1NullMerge.mergeWith(null);
 console.log(mergedObjNull); // console.log({ name: 'John' })
-mergedObjNull = obj1NullMerge.merge(undefined);
+mergedObjNull = obj1NullMerge.mergeWith(undefined);
 console.log(mergedObjNull); // console.log({ name: 'John' })
 
 const obj1MergeEmptyRecord = { name: 'John' };
 const obj2MergeEmptyRecord: Record<string, any> = {};
-const mergedObjEmptyRecord = obj1MergeEmptyRecord.merge(obj2MergeEmptyRecord);
+const mergedObjEmptyRecord = obj1MergeEmptyRecord.mergeWith(obj2MergeEmptyRecord);
 console.log(mergedObjEmptyRecord); // console.log({ name: 'John' })
 
 const obj1MergeNonEmptyRecord: Record<string, any> = { key1: 'value1' };
 const obj2MergeNonEmpty = { key2: 'value2' };
-const mergedObjNonEmptyRecord = obj1MergeNonEmptyRecord.merge(obj2MergeNonEmpty);
+const mergedObjNonEmptyRecord = obj1MergeNonEmptyRecord.mergeWith(obj2MergeNonEmpty);
 console.log(mergedObjNonEmptyRecord); // console.log({ key1: 'value1', key2: 'value2' })
 ```
 
