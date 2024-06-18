@@ -41,8 +41,7 @@ describe('Object.isNotEmpty', () => {
 describe('Object.exist', () => {
   it('should return true if the object is not empty and the callback returns true', () => {
     const obj = { name: 'John' };
-    const callback = (value: any) => value.name === 'John';
-    expect(obj.exist(callback)).toBe(true);
+    expect(obj.exist((it) => it.name === 'John')).toBe(true);
   });
 
   it('should return true if the object is not empty and no callback is provided', () => {
@@ -51,20 +50,18 @@ describe('Object.exist', () => {
   });
 
   it('should return false if the object is empty', () => {
-    const obj: any = {};
+    const obj = {};
     expect(obj.exist()).toBe(false);
   });
 
   it('should return the result of the callback if provided', () => {
     const obj = { name: 'John' };
-    const callback = (value: any) => value.name.length;
-    expect(obj.exist(callback)).toBe(4);
+    expect(obj.exist((it) => it.name.length)).toBe(4);
   });
 
   it('should return false if the callback returns false', () => {
     const obj = { name: 'John' };
-    const callback = (value: any) => value.name === 'Jane';
-    expect(obj.exist(callback)).toBe(false);
+    expect(obj.exist((it) => it.name === 'Jane')).toBe(false);
   });
 });
 
