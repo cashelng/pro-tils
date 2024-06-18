@@ -10,10 +10,10 @@ Please raise an issue, or submit a pull request yourself if you see any overlap.
 
 # Why
 
-All of this is just to use chaining functions efficiently.
+All of this is just to create utility functions which are usually used in projects, also provide a usage of chaining functions efficiently.
 Chaining functions can indeed reduce the need for intermediate variable declarations, leading to more concise and readable code.
 
-Let consider my example, you had an object which is like
+Let consider below example, we had an object which is like
 
 ```typescript
 type User = {
